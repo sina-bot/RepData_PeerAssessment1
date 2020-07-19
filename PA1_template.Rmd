@@ -69,7 +69,7 @@ activityPattern <- activity %>% group_by(interval) %>%
 ```
 
 Second, plot a line-diagram for visualizing the average activity pattern.  
-```{r}
+```{r message = FALSE}
 with(activityPattern, plot(interval, steps, type = "l", lty = 1, xaxt = "n", 
                            main = "Average Daily Activity Pattern", xlab = "Daytime", ylab = "Number of Steps"))
 axis(side = 1, at = activityPattern$interval)
