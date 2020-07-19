@@ -55,6 +55,25 @@ hist(activityDay$steps, col = "green",
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
+```r
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot1.png", width = 480, height = 480)
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
+
 3. Calculate and report the mean and median of the total number of steps taken per day
 
 ```r
@@ -87,6 +106,25 @@ axis(side = 1, at = activityPattern$interval)
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+
+```r
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot2.png", width = 480, height = 480)
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
 
 2. Calculate, which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?  
 
@@ -157,10 +195,30 @@ ggplot(activityNoNADay, aes(x=steps)) +
     geom_text(x=17000, y=12, color = "blue", alpha = 0.5, label= paste("Mean (original) =", activityMean)) +
     geom_text(x=17000, y=11, color = "red", alpha = 0.5, label= paste("Mean (imputed) =", activityMeanImp)) +
     geom_text(x=17000, y=10, color = "blue", alpha = 0.5, label= paste("Median (original) =", activityMedian)) +
-    geom_text(x=17000, y=9, color = "red", alpha = 0.5, label= paste("Median (imputed) =", activityMedianImp))
+    geom_text(x=17000, y=9, color = "red", alpha = 0.5, label= paste("Median (imputed) =", activityMedianImp)) +
+    ggtitle("Total number of steps - calculation with missing values \n compared to calculation with imputed missing data")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+
+```r
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot3.png", width = 480, height = 480)
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
 
 **The mean and median values are higher when missing values are imputed.**  
 
@@ -187,7 +245,27 @@ Second, plot the line chart
 ```r
 ggplot(activityPatternNoNA, aes(interval, steps, group= daytype)) + 
   geom_line() + 
-  facet_wrap(~daytype, ncol=1)
+  facet_wrap(~daytype, ncol=1) +
+  ggtitle("Average Daily Activity Pattern") 
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+
+```r
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot4.png", width = 480, height = 480)
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
