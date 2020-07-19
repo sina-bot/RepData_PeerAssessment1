@@ -39,9 +39,12 @@ activityDay <- activity %>% group_by(date) %>%
 ```
 
 2. Make a histogram of the total number of steps taken each day
-```{r}
+```{r message = FALSE}
 hist(activityDay$steps, col = "green", 
      main = "Total Number of Steps per Day", xlab = "Steps per day")
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot1.png", width = 480, height = 480)
+dev.off()
 ```
 
 3. Calculate and report the mean and median of the total number of steps taken per day
@@ -70,6 +73,9 @@ Second, plot a line-diagram for visualizing the average activity pattern.
 with(activityPattern, plot(interval, steps, type = "l", lty = 1, xaxt = "n", 
                            main = "Average Daily Activity Pattern", xlab = "Daytime", ylab = "Number of Steps"))
 axis(side = 1, at = activityPattern$interval)
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot2.png", width = 480, height = 480)
+dev.off()
 ```
 
 2. Calculate, which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?  
@@ -130,7 +136,11 @@ ggplot(activityNoNADay, aes(x=steps)) +
     geom_text(x=17000, y=12, color = "blue", alpha = 0.5, label= paste("Mean (original) =", activityMean)) +
     geom_text(x=17000, y=11, color = "red", alpha = 0.5, label= paste("Mean (imputed) =", activityMeanImp)) +
     geom_text(x=17000, y=10, color = "blue", alpha = 0.5, label= paste("Median (original) =", activityMedian)) +
-    geom_text(x=17000, y=9, color = "red", alpha = 0.5, label= paste("Median (imputed) =", activityMedianImp))
+    geom_text(x=17000, y=9, color = "red", alpha = 0.5, label= paste("Median (imputed) =", activityMedianImp)) +
+    ggtitle("Total number of steps - calculation with missing values \n compared to calculation with imputed missing data")
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot3.png", width = 480, height = 480)
+dev.off()
 ```
 
 **The mean and median values are higher when missing values are imputed.**  
@@ -155,5 +165,9 @@ Second, plot the line chart
 ```{r message = FALSE}
 ggplot(activityPatternNoNA, aes(interval, steps, group= daytype)) + 
   geom_line() + 
-  facet_wrap(~daytype, ncol=1)
+  facet_wrap(~daytype, ncol=1) +
+  ggtitle("Average Daily Activity Pattern") 
+## copy my plot to a PNG file
+dev.copy(png, file = "figures/plot4.png", width = 480, height = 480)
+dev.off()
 ```
